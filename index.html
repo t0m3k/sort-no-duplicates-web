@@ -45,10 +45,47 @@
       </header>
       <div id="exampleContent" class="container">
         <div class="row">
-          <div class="col">Column</div>
-          <div class="col">Column</div>
+          <div class="col">
+            <form>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Input</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="numberInput"
+                  aria-describedby="numberHelp"
+                />
+                <div id="numberHelp" class="form-text">
+                  Please enter number that will be included in the example.
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Add to list</button>
+            </form>
+          </div>
+          <div class="col">
+            <ul class="list-group">
+              <li class="list-group-item">An item</li>
+              <li class="list-group-item">A second item</li>
+            </ul>
+          </div>
         </div>
       </div>
+    </div>
+    <div id="code">
+      <header class="py-3 mb-4 border-bottom">
+        <div class="container d-flex flex-wrap justify-content-center">
+          <a
+            href="/#example"
+            class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none"
+          >
+            <svg class="bi me-2" width="40" height="32">
+              <use xlink:href="#bootstrap" />
+            </svg>
+            <span class="fs-4">Source Code</span>
+          </a>
+        </div>
+      </header>
     </div>
   </body>
 </html>
