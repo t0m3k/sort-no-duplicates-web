@@ -27,64 +27,168 @@
       integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA="
       crossorigin="anonymous"
     ></script>
+
+    <!-- google code prettify -->
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+
+    <!-- Style -->
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div id="example">
-      <header class="py-3 mb-4 border-bottom">
-        <div class="container d-flex flex-wrap justify-content-center">
+    <nav class="navbar navbar-light bg-light px-3 sticky-top">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link" href="#example">Example</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#code">Source code</a>
+        </li>
+        <li class="nav-item dropdown">
           <a
-            href="/#example"
-            class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none"
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-expanded="false"
+            >Links</a
           >
-            <svg class="bi me-2" width="40" height="32">
-              <use xlink:href="#bootstrap" />
-            </svg>
-            <span class="fs-4">Working Example</span>
-          </a>
-        </div>
-      </header>
-      <div id="exampleContent" class="container">
-        <div class="row">
-          <div class="col">
-            <form action="" onsubmit="addItem(); return false;">
-              <div class="mb-3">
-                <label for="numberInput" class="form-label">Input</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  id="numberInput"
-                  aria-describedby="numberHelp"
-                />
-                <div id="numberHelp" class="form-text">
-                  Please enter number that will be included in the example.
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="#scrollspyHeading3">Github</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#scrollspyHeading4">Fourth</a>
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a class="dropdown-item" href="#scrollspyHeading5">Fifth</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div
+      data-bs-spy="scroll"
+      data-bs-target="#navbar-example2"
+      data-bs-offset="0"
+      class="scrollspy-example"
+      tabindex="0"
+    >
+      <div id="example">
+        <header class="py-3 mb-4 border-bottom">
+          <div class="container d-flex flex-wrap justify-content-center">
+            <a
+              href="#example"
+              class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none"
+            >
+              <svg class="bi me-2" width="40" height="32">
+                <use xlink:href="#bootstrap" />
+              </svg>
+              <span class="fs-4">Example</span>
+            </a>
+          </div>
+        </header>
+        <div id="exampleContent" class="container">
+          <div class="row">
+            <div class="col">
+              <form action="" onsubmit="formInput(); return false;">
+                <div class="mb-3">
+                  <label for="numberInput" class="form-label">Input</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="numberInput"
+                    aria-describedby="numberHelp"
+                  />
+                  <div id="numberHelp" class="form-text">
+                    Please enter number that will be included in the example.
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                  Add to list
+                </button>
+              </form>
+            </div>
+            <div class="col table-wrapper">
+              <div class="row">
+                <div class="col">
+                  <label for="numberList" class="form-label">Input table</label>
+                  <table class="table">
+                    <tr id="numberList"></tr>
+                  </table>
+                </div>
+                <div class="col">
+                  <label for="resultList" class="form-label"
+                    >Output table</label
+                  >
+                  <table class="table">
+                    <tr id="resultList"></tr>
+                  </table>
                 </div>
               </div>
-
-              <button type="submit" class="btn btn-primary">Add to list</button>
-            </form>
-          </div>
-          <div class="col">
-            <label for="inputTable" class="form-label">Input table</label>
-            <ul id="numberList" class="list-group"></ul>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div id="code">
-      <header class="py-3 mb-4 border-bottom">
+      <div class="mt-5" id="code">
+        <header class="py-3 mb-4 border-bottom">
+          <div class="container d-flex flex-wrap justify-content-center">
+            <a
+              href="#code"
+              class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none"
+            >
+              <svg class="bi me-2" width="40" height="32">
+                <use xlink:href="#bootstrap" />
+              </svg>
+              <span class="fs-4">Source Code</span>
+            </a>
+          </div>
+        </header>
         <div class="container d-flex flex-wrap justify-content-center">
-          <a
-            href="/#code"
-            class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none"
-          >
-            <svg class="bi me-2" width="40" height="32">
-              <use xlink:href="#bootstrap" />
-            </svg>
-            <span class="fs-4">Source Code</span>
-          </a>
+          <pre>
+<code id="source-code" class="prettyprint">
+const mergeSort = (array) => {
+  if (array.length < 2) return array;
+
+  // find middle point and split array
+  const middle = Math.floor(array.length / 2);
+  const arr1 = array.slice(0, middle);
+  const arr2 = array.slice(middle);
+
+  // use reccurency to get to arrays of size 1 and merge them
+  return merge(mergeSort(arr1), mergeSort(arr2));
+};
+
+const merge = (arr1, arr2) => {
+  const result = [];
+
+  while (arr1.length && arr2.length) {
+    // assign smaller first element from arrays to e.
+    const e = arr1[0] < arr2[0] ? arr1.shift() : arr2.shift();
+
+    // if there are elements in result and e is different than last element add e to resul
+    if (result.length === 0 || e != result[result.length - 1]) result.push(e);
+  }
+
+  // Clear arrays if there is anything left in either one of them.
+  arr1.forEach((item) => {
+    if (item != result[result.length - 1]) result.push(item);
+  });
+  arr2.forEach((item) => {
+    if (item != result[result.length - 1]) result.push(item);
+  });
+
+  return result;
+};</code>
+      </pre>
         </div>
-      </header>
+      </div>
     </div>
   </body>
+  <script src="src/helpers.js"></script>
+  <script src="src/sort.js"></script>
+  <script src="src/result.js"></script>
   <script src="src/main.js"></script>
 </html>
