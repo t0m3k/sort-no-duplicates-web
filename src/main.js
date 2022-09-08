@@ -3,15 +3,16 @@ const formInput = () => {
 
   const value = parseInt(input.val());
 
-  // if no value received clear input, focus and exit function
-  if (!value) {
+  // if invalid value received clear input, focus on it again and exit function
+  if (isNaN(value)) {
     input.val("");
     input.focus();
     return;
   }
 
-  const danger = Result.includes(value) ? "table-danger" : "";
-  addToTable(value, "#numberList", danger);
+  let style = value === 1337 ? "table-success" : "";
+  style = Result.includes(value) ? "table-danger" : style;
+  addToTable(value, "#numberList", style);
 
   // clear result list table
   $("#resultList").html("");
