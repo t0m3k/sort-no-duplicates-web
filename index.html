@@ -36,35 +36,26 @@
   </head>
   <body>
     <nav class="navbar navbar-light bg-light px-3 sticky-top">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#">Hello there</a>
       <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link" href="#task">Task description</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#assumptions">Example</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="#example">Example</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#code">Source code</a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item">
           <a
-            class="nav-link dropdown-toggle"
-            data-bs-toggle="dropdown"
-            href="#"
-            role="button"
-            aria-expanded="false"
-            >Links</a
+            class="nav-link"
+            href="https://github.com/t0m3k/sort-no-duplicates-web"
+            >Github</a
           >
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item" href="#scrollspyHeading3">Github</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#scrollspyHeading4">Fourth</a>
-            </li>
-            <li><hr class="dropdown-divider" /></li>
-            <li>
-              <a class="dropdown-item" href="#scrollspyHeading5">Fifth</a>
-            </li>
-          </ul>
         </li>
       </ul>
     </nav>
@@ -75,7 +66,57 @@
       class="scrollspy-example"
       tabindex="0"
     >
-      <div id="example">
+      <div id="task" class="pt-5">
+        <header class="py-3 mb-4 border-bottom">
+          <div class="container d-flex flex-wrap justify-content-center">
+            <a
+              href="#task"
+              class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none"
+            >
+              <svg class="bi me-2" width="40" height="32">
+                <use xlink:href="#task" />
+              </svg>
+              <span class="fs-4">Task description</span>
+            </a>
+          </div>
+        </header>
+        <div class="container">
+          <div class="row">
+            <p>
+              In a language of your choice, using all best practice principles
+              you’re aware of, could you please provide code that reads a list
+              of 10 numbers ranging between 1 to 100. Assuming there are 4
+              duplicates in the list of numbers, the output should remove the
+              duplicates and sort the remaining numbers in descending
+              order.Please state any assumptions you have made in this
+              assignment.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div id="assumptions" class="pt-5">
+        <header class="py-3 mb-4 border-bottom">
+          <div class="container d-flex flex-wrap justify-content-center">
+            <a
+              href="#assumptions"
+              class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none"
+            >
+              <svg class="bi me-2" width="40" height="32">
+                <use xlink:href="#task" />
+              </svg>
+              <span class="fs-4">Assumptions</span>
+            </a>
+          </div>
+        </header>
+        <div class="container">
+          <div class="row">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">The input is vetted.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div id="example" class="pt-5">
         <header class="py-3 mb-4 border-bottom">
           <div class="container d-flex flex-wrap justify-content-center">
             <a
@@ -132,7 +173,7 @@
           </div>
         </div>
       </div>
-      <div class="mt-5" id="code">
+      <div class="mt-5 pt-5" id="code">
         <header class="py-3 mb-4 border-bottom">
           <div class="container d-flex flex-wrap justify-content-center">
             <a
@@ -142,7 +183,7 @@
               <svg class="bi me-2" width="40" height="32">
                 <use xlink:href="#bootstrap" />
               </svg>
-              <span class="fs-4">Source Code</span>
+              <span class="fs-4">Sorting Source Code</span>
             </a>
           </div>
         </header>
@@ -164,21 +205,23 @@ const mergeSort = (array) => {
 const merge = (arr1, arr2) => {
   const result = [];
 
+  // add item to result if it't value isn't equal to the last item in result
+  const addWithCheck = (item) => {
+    if (result.length === 0 || item != result[result.length - 1])
+      result.push(item);
+  };
+
   while (arr1.length && arr2.length) {
     // assign smaller first element from arrays to e.
     const e = arr1[0] < arr2[0] ? arr1.shift() : arr2.shift();
 
     // if there are elements in result and e is different than last element add e to resul
-    if (result.length === 0 || e != result[result.length - 1]) result.push(e);
+    addWithCheck(e);
   }
 
   // Clear arrays if there is anything left in either one of them.
-  arr1.forEach((item) => {
-    if (item != result[result.length - 1]) result.push(item);
-  });
-  arr2.forEach((item) => {
-    if (item != result[result.length - 1]) result.push(item);
-  });
+  arr1.forEach(addWithCheck);
+  arr2.forEach(addWithCheck);
 
   return result;
 };</code>
