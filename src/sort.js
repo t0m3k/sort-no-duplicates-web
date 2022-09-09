@@ -21,7 +21,7 @@ const merge = (arr1, arr2) => {
 
   while (arr1.length && arr2.length) {
     // assign smaller first element from arrays to e.
-    const e = arr1[0] < arr2[0] ? arr1.shift() : arr2.shift();
+    const e = arr1[0] > arr2[0] ? arr1.shift() : arr2.shift();
 
     // if there are elements in result and e is different than last element add e to resul
     addWithCheck(e);
